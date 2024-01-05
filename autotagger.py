@@ -1,21 +1,17 @@
 import piexif
-import piexif.helper
 
-def add_comment(image_path, comment):
-  # Load the Exif data from the image
-  exif_dict = piexif.load(image_path)
+def add_title(image_path, title):
+ # Load the Exif data from the image
+ exif_dict = piexif.load(image_path)
 
-  # Convert the comment to the correct format
-  user_comment = piexif.helper.UserComment.dump(comment)
+ # Add the title to the ImageDescription field in the ImageIFD data
+ exif_dict['0th'][piexif.ImageIFD.ImageDescription] = title.encode('utf-8')
 
-  # Add the comment to the UserComment field in the Exif data
-  exif_dict['Exif'][piexif.ExifIFD.UserComment] = user_comment
-
-  # Write the modified Exif data back to the image
-  piexif.insert(piexif.dump(exif_dict), image_path)
+ # Write the modified Exif data back to the image
+ piexif.insert(piexif.dump(exif_dict), image_path)
 
 if __name__ == "__main__":
-  image_path = r"image.jpg"
-  comment = "My comment"
+ image_path = r"image.jpg"
+ title = "My Image Title"
 
-  add_comment(image_path, comment)
+ add_title(image_path, title)
