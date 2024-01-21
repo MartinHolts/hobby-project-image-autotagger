@@ -33,3 +33,7 @@ vis_processors.keys()
 
 # prepare the image as model input using the associated processors
 image = vis_processors["eval"](raw_image).unsqueeze(0).to(device)
+
+# generate caption using beam search
+caption = model.generate({"image": image})
+print(caption)
