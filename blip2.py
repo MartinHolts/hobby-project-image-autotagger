@@ -15,6 +15,10 @@ from PIL import Image
 import requests
 from lavis.models import load_model_and_preprocess
 
-img_path = './image.jpg' # Path to the image file
+# Import image file and convert to RGB and resize
+img_path = './image.jpg'
 raw_image = Image.open(img_path).convert('RGB')
 raw_image.resize((596, 437))
+
+# setup device to use CPU
+device = "cpu"
