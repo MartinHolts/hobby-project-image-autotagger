@@ -16,7 +16,7 @@ import requests
 from lavis.models import load_model_and_preprocess
 
 # Import image file and convert to RGB and resize
-img_path = './image2.jpg'
+img_path = './image.jpg'
 raw_image = Image.open(img_path).convert('RGB')
 raw_image.resize((596, 437))
 
