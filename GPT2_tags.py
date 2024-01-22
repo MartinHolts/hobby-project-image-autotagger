@@ -23,4 +23,4 @@ def generate_tags(caption):
     return tags
 
 # Test the function
-print(generate_tags("an anime scene with a waterfall in the middle of a forest"))
+print(generate_tags("a waterfall in the middle of a lush green forest"))
